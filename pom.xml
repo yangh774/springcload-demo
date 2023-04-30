@@ -15,6 +15,7 @@
         <module>publisher</module>
         <module>consumer</module>
         <module>spring-c</module>
+        <module>spring-d</module>
     </modules>
 
     <properties>
