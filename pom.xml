@@ -16,6 +16,7 @@
         <module>consumer</module>
         <module>spring-c</module>
         <module>spring-d</module>
+        <module>spring-e</module>
     </modules>
 
     <properties>
