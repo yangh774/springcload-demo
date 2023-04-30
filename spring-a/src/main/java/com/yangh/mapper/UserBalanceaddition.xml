@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  namespace为命名空间、当前sql.xml文件的唯一标识、调用sql语句时需要靠他+id引入  -->
+<mapper namespace="com.yangh.mapper.UserBalanceaddition">
+    <update id="userBalanceAddition">
+        update student set Ssex = (Ssex + #{money}) where Sname = #{userName}
+    </update>
+
+    <update id="touziSql">
+        update atm set atm_money = (atm_money -1) where atm_name = "杨航"
+    </update>
+
+</mapper>
+
+

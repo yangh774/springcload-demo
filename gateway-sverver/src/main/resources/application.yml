@@ -1,0 +1,20 @@
+server:
+  port: 80
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes: #设置路由，注意是数组，可以设置多个，按照id做隔离
+        - id: user-service-router    #路由id，没有要求，保持唯一即可
+          uri: lb://alibaba-a  # load balance 这种写法后面跟应用名称 路由的目标地址
+          predicates:   # 路由断言 ：断定的意思 布尔表达式 true/false 是否符合
+            - Path=/spring-a/**  # 以spring-a开头就符合 然后代理到uri
+          filters:
+            - StripPrefix=1 # 指的是将请求发送到下游之前从请求中剥离路径个数 去掉部分URL
+            - AddRequestHeader=gateway,why
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        password: nacos
+        username: nacos

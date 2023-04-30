@@ -1,0 +1,71 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: alibaba-a
+  profiles:
+    active: dev # 环境
+  cloud:
+    nacos: # 配置 nacos
+      discovery:
+        username: nacos
+        password: nacos
+        server-addr: localhost:8848
+      config: # 配置 配置中心
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yaml
+        extension-configs:
+          - data-id: alibaba-a-dev.yaml
+            refresh: true
+          - data-id: spring-a-text-dev.yaml
+            refresh: true
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: yh123
+    url: jdbc:mysql://localhost:3306/lianxi?serverTimezone=UTC
+    username: root
+  redis:
+    host: 192.168.47.128
+    port: 6379
+    password: yh123
+    database: 0
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 5
+        max-wait: 5000ms
+feign:
+  sentinel:
+    enabled: false
+
+seata:
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      namespace: "" # 如果是默认的命名空间、不要写public
+      group: DEFAULT_GROUP
+      username: nacos
+      password: nacos
+      application: seata-server
+  tx-service-group: seata-demo #? 事务组名称 必须和service.vgroupMapping的一致？
+  service:
+    vgroup-mapping: # 使用默认的组映射，相当于在一个组别下
+      seata-demo: SH # 事务组与集群映射
+    disable-global-transaction: false
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: localhost:8848
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos
+
+

@@ -1,0 +1,15 @@
+/.idea/
+/consumer/src/test/
+/consumer/target/
+/gateway-sverver/target/
+/publisher/target/
+/gateway-sverver/src/test/
+/publisher/src/test/
+/spring-a/target/
+/spring-a/src/test/
+/spring-b/target/
+/spring-b/src/test/
+/spring-c/target/
+/spring-c/src/test/
+/xxl-job-2.3.1/
+/xxl-job-2.3.1.zip

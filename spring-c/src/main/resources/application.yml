@@ -1,0 +1,15 @@
+server:
+  port: 8801
+
+spring:
+  # 配置文件上传大小限制
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+minio:
+  endpoint: http://192.168.127.128:9000
+  accessKey: minioadmin
+  secretKey: minioadmin
+  bucketName: demo1 # 捅名称
+

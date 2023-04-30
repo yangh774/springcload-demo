@@ -1,0 +1,31 @@
+server:
+  port: 8689
+spring:
+  rabbitmq:
+    host: 192.168.26.128
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener: # rabbimq监听
+      simple:
+        prefetch: 1 # 每次拿一条消息、处理完再拿下一条。	不然会把消息全获取、然后再消费
+        acknowledge-mode: auto  # 在这里设置消息确认机制 auto none manual
+        retry:
+          enabled: true # 开启消费者失败重试机制
+          initial-interval: 1000 # 初始失败等待时长
+          multiplier: 1 # 下次失败等待市场倍数
+          max-attempts: 3 # 最大重试次数
+          stateless: true # true无状态、false有状态、有事务改为false
+  redis:
+    host: 192.168.26.128
+    port: 6379
+    password: yh123
+    database: 0
+    timeout: 5000ms
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 5
+        max-wait: 5000ms
